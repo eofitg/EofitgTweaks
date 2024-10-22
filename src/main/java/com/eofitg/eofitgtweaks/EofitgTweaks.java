@@ -9,8 +9,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = EofitgToolsMod.MODID, name = EofitgToolsMod.MODNAME, version = EofitgToolsMod.VERSION)
-public class EofitgToolsMod {
+@Mod(modid = EofitgTweaks.MODID, name = EofitgTweaks.MODNAME, version = EofitgTweaks.VERSION)
+public class EofitgTweaks {
     public static final String MODID = "eofitgtweaks";
     public static final String MODNAME = "eofitg Tweaks";
     public static final String VERSION = "1.0";
