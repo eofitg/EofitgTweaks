@@ -11,7 +11,7 @@ import org.lwjgl.input.Keyboard;
 
 public class KeyBindListener {
 
-    private final KeyBinding autoJumpKeyBind = new KeyBinding("Pickup Jump", Keyboard.KEY_TAB, "EofitgTweaks");
+    private final KeyBinding autoJumpKeyBind = new KeyBinding("Auto Jump", Keyboard.KEY_TAB, "EofitgTweaks");
 
     public KeyBindListener() {
         // you need to register your key-bind for it to show up in the settings menu
@@ -25,7 +25,7 @@ public class KeyBindListener {
         if (autoJumpKeyBind.isPressed()) { // using isPressed() will return true once when the key is pressed
 
             AutoJump.isActive = !AutoJump.isActive;
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Pickup Jump Toggled To \"" + AutoJump.isActive + "\""));
+            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Auto Jump Toggled To \"" + AutoJump.isActive + "\""));
 
         } else if (autoJumpKeyBind.isKeyDown()) { // using isKeyDown() will return true the whole time the key is held down
 
