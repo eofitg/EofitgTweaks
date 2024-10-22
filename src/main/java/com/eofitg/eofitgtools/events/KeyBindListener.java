@@ -1,8 +1,6 @@
 package com.eofitg.eofitgtools.events;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -22,11 +20,11 @@ public class KeyBindListener {
 
         if (exampleKeybind.isPressed()) { // using isPressed() will return true once when the key is pressed
 
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("The example keybind has been pressed"));
+            // Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("The example keybind has been pressed"));
 
         } else if (exampleKeybind.isKeyDown()) { // using isKeyDown() will return true the whole time the key is held down
 
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("The example keybind is held down"));
+            // Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("The example keybind is held down"));
 
         }
     }
