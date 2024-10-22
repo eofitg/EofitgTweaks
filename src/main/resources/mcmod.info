@@ -1,0 +1,16 @@
+[
+{
+  "modid": "eofitgtools",
+  "name": "eofitg Tools",
+  "description": "eofitg's mini-tools.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/eofitg",
+  "updateUrl": "https://github.com/eofitg",
+  "authorList": ["eofitg"],
+  "credits": "Nah, why?",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
