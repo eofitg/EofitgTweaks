@@ -1,4 +1,4 @@
-package com.eofitg.eofitgtools.gui;
+package com.eofitg.eofitgtweaks.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
