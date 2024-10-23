@@ -1,6 +1,7 @@
 package com.eofitg.eofitgtweaks.utils;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -12,15 +13,20 @@ public class AutoJump {
 
     @SubscribeEvent
     public void pickupItem(EntityItemPickupEvent event) {
+
         if (!isActive) {
             return;
         }
+
         playerJump();
+
     }
 
     public static class RegularlyJumpThread extends Thread {
+
         @Override
         public void run() {
+
             while(true) {
                 if (isActive) {
                     playerJump();
@@ -31,12 +37,18 @@ public class AutoJump {
                     e.printStackTrace();
                 }
             }
+
         }
+
     }
 
     protected static void playerJump() {
-        Minecraft.getMinecraft().thePlayer.jump();
-        Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Jumped by \"" + AutoJump.isActive + "\""));
+
+        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+
+        player.jump();
+        player.addChatMessage(new ChatComponentText("Jumped by \"" + AutoJump.isActive + "\""));
+
     }
 
 }
