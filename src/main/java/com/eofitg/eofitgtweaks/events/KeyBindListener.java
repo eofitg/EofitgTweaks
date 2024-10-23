@@ -13,7 +13,7 @@ public class KeyBindListener {
     private final KeyBinding autoJumpKeyBind = new KeyBinding("Auto Jump", Keyboard.KEY_TAB, "EofitgTweaks");
 
     public KeyBindListener() {
-        // you need to register your key-bind for it to show up in the settings menu
+        // register key-bind for it to show up in the settings menu
         ClientRegistry.registerKeyBinding(autoJumpKeyBind);
     }
 
