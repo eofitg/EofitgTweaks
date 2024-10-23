@@ -1,9 +1,8 @@
 package com.eofitg.eofitgtweaks.events;
 
 import com.eofitg.eofitgtweaks.utils.AutoJump;
-import net.minecraft.client.Minecraft;
+
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -23,14 +22,8 @@ public class KeyBindListener {
         // this method runs everytime a key on the keyboard is pressed / unpressed
 
         if (autoJumpKeyBind.isPressed()) { // using isPressed() will return true once when the key is pressed
-
-            AutoJump.isActive = !AutoJump.isActive;
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Auto Jump Toggled To \"" + AutoJump.isActive + "\""));
-
-        } else if (autoJumpKeyBind.isKeyDown()) { // using isKeyDown() will return true the whole time the key is held down
-
-            // Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("The example keybind is held down"));
-
+            AutoJump.toggle();
         }
+
     }
 }
