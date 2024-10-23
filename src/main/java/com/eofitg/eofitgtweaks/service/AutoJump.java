@@ -3,8 +3,6 @@ package com.eofitg.eofitgtweaks.service;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.ChatComponentText;
-import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class AutoJump extends AbstractService{
 
@@ -14,17 +12,6 @@ public class AutoJump extends AbstractService{
 
     public AutoJump() {
         super(serviceName);
-    }
-
-    @SubscribeEvent
-    public void pickupItem(EntityItemPickupEvent event) {
-
-        if (!isActive) {
-            return;
-        }
-
-        playerJump();
-
     }
 
     public static class RegularlyJumpThread extends Thread {

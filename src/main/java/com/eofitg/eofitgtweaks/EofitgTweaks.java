@@ -28,7 +28,6 @@ public class EofitgTweaks {
     public void init(FMLInitializationEvent event) {
 
         MinecraftForge.EVENT_BUS.register(new KeyBindListener());
-        MinecraftForge.EVENT_BUS.register(new AutoJump());
 
         regularlyJumpThread = new AutoJump.RegularlyJumpThread();
         regularlyJumpThread.start();
