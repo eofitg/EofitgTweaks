@@ -1,4 +1,4 @@
-package com.eofitg.eofitgtweaks.utils;
+package com.eofitg.eofitgtweaks.service;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -6,15 +6,14 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class AutoJump {
+public class AutoJump extends AbstractService{
 
-    private static boolean isActive = false;
+    private static final String serviceName = "Auto Jump";
+
     private static final long jumpInterval = 60 * 1000;
 
-    public static void toggle() {
-        isActive = !isActive;
-        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
-        player.addChatMessage(new ChatComponentText("Auto Jump Toggled To \"" + isActive + "\""));
+    public AutoJump() {
+        super(serviceName);
     }
 
     @SubscribeEvent
@@ -30,10 +29,11 @@ public class AutoJump {
 
     public static class RegularlyJumpThread extends Thread {
 
+        public volatile boolean active = true;
+
         @Override
         public void run() {
-
-            while(true) {
+            while(active) {
                 if (isActive) {
                     playerJump();
                 }
@@ -43,7 +43,6 @@ public class AutoJump {
                     e.printStackTrace();
                 }
             }
-
         }
 
     }

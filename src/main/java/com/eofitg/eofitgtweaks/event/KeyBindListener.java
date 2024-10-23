@@ -1,6 +1,6 @@
-package com.eofitg.eofitgtweaks.events;
+package com.eofitg.eofitgtweaks.event;
 
-import com.eofitg.eofitgtweaks.utils.AutoJump;
+import com.eofitg.eofitgtweaks.service.AutoJump;
 
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;

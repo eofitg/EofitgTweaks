@@ -1,10 +1,15 @@
-package com.eofitg.eofitgtweaks.utils;
+package com.eofitg.eofitgtweaks.service;
 
-public class AntiAntiAFK {
+public class AntiAntiAFK extends AbstractService{
 
-    public static boolean isActive = false;
-    private static int moveInterval = 5 * 1000;
-    private static int keepTime = 500; // ms
+    private static final String serviceName = "Anti Anti-AFK";
+
+    private static final int moveInterval = 5 * 1000;
+    private static final int keepTime = 500;
+
+    public AntiAntiAFK() {
+        super(serviceName);
+    }
 
     public static class AntiAntiAFKThread extends Thread {
 
