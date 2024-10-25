@@ -8,21 +8,21 @@ public abstract class AbstractService {
 
     private boolean isActive;
 
-    private final String ServiceName;
+    private final String serviceName;
 
     public AbstractService(String serviceName) {
-        isActive = false;
-        ServiceName = serviceName;
+        this.isActive = false;
+        this.serviceName = serviceName;
     }
 
     protected void toggle() {
-        isActive = !isActive;
+        this.isActive = !this.isActive;
         EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
-        player.addChatMessage(new ChatComponentText(ServiceName + " toggled, now \"" + isActive + "\""));
+        player.addChatMessage(new ChatComponentText(this.serviceName + " toggled, now \"" + this.isActive + "\""));
     }
 
     protected boolean isActive() {
-        return isActive;
+        return this.isActive;
     }
 
 }
