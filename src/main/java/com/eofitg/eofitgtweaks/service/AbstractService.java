@@ -6,19 +6,23 @@ import net.minecraft.util.ChatComponentText;
 
 public abstract class AbstractService {
 
-    protected static boolean isActive;
+    private boolean isActive;
 
-    private static String ServiceName;
+    private final String ServiceName;
 
     public AbstractService(String serviceName) {
         isActive = false;
         ServiceName = serviceName;
     }
 
-    public static void toggle() {
+    protected void toggle() {
         isActive = !isActive;
         EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
         player.addChatMessage(new ChatComponentText(ServiceName + " toggled, now \"" + isActive + "\""));
+    }
+
+    protected boolean isActive() {
+        return isActive;
     }
 
 }

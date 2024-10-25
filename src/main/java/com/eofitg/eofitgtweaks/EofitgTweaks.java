@@ -1,6 +1,7 @@
 package com.eofitg.eofitgtweaks;
 
 import com.eofitg.eofitgtweaks.event.KeyBindListener;
+import com.eofitg.eofitgtweaks.service.AntiAntiAFK;
 import com.eofitg.eofitgtweaks.service.AutoJump;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -17,7 +18,8 @@ public class EofitgTweaks {
     public static final String MODNAME = "eofitg Tweaks";
     public static final String VERSION = "0.1.1";
 
-    private AutoJump.RegularlyJumpThread regularlyJumpThread;
+    private final AutoJump autoJump = new AutoJump();
+    private final AntiAntiAFK antiAntiAFK = new AntiAntiAFK();
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -29,9 +31,6 @@ public class EofitgTweaks {
 
         MinecraftForge.EVENT_BUS.register(new KeyBindListener());
 
-        regularlyJumpThread = new AutoJump.RegularlyJumpThread();
-        regularlyJumpThread.start();
-
     }
 
     @EventHandler
@@ -42,7 +41,8 @@ public class EofitgTweaks {
     @EventHandler
     public void drop(FMLServerStoppedEvent event) {
 
-        regularlyJumpThread.active = false;
+        autoJump.killThread();
+        antiAntiAFK.killThread();
 
     }
 

@@ -4,24 +4,50 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.ChatComponentText;
 
-public class AutoJump extends AbstractService{
+public class AutoJump extends AbstractService {
 
     private static final String serviceName = "Auto Jump";
+    private static final int jumpInterval = 10 * 1000;
 
-    private static final long jumpInterval = 60 * 1000;
+    private RegularlyJumpThread thread;
 
     public AutoJump() {
         super(serviceName);
+        thread = new RegularlyJumpThread();
     }
 
-    public static class RegularlyJumpThread extends Thread {
+    public void killThread() {
+        if (thread == null) {
+            return;
+        }
 
-        public volatile boolean active = true;
+        thread.kill();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        thread = null;
+    }
+
+    @Override
+    public void toggle() {
+        super.toggle();
+
+        if (isActive() && !thread.isAlive()) {
+            thread = new RegularlyJumpThread();
+            thread.start();
+        }
+    }
+
+    public class RegularlyJumpThread extends Thread {
+
+        private volatile boolean active = true;
 
         @Override
         public void run() {
             while(active) {
-                if (isActive) {
+                if (isActive()) {
                     playerJump();
                 }
                 try {
@@ -32,14 +58,18 @@ public class AutoJump extends AbstractService{
             }
         }
 
+        public void kill() {
+            active = false;
+        }
+
     }
 
-    protected static void playerJump() {
+    protected void playerJump() {
 
         EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
 
         player.jump();
-        player.addChatMessage(new ChatComponentText("Jumped by \"" + AutoJump.isActive + "\""));
+        player.addChatMessage(new ChatComponentText("Jumped by \"" + isActive() + "\""));
 
     }
 
