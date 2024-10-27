@@ -5,7 +5,7 @@ import net.minecraft.client.Minecraft;
 public class AutoJump extends AbstractService {
 
     private static final String serviceName = "Auto Jump";
-    private static final int jumpInterval = 10 * 1000;
+    private static final int jumpInterval = 120 * 1000;
     private static final int holdTime = 100;
 
     private RegularlyJumpThread thread;
