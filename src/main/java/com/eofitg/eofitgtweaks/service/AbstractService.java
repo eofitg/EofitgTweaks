@@ -33,11 +33,10 @@ public abstract class AbstractService {
 
     // Tap a button in the player's way
     // = Hold down a button for a while(hold) and then lift it up
-    protected void pressKey(KeyBinding key, int hold) {
+    protected void pressKey(int keycode, int hold) {
 
         Minecraft minecraft = Minecraft.getMinecraft();
         EntityPlayerSP player = minecraft.thePlayer;
-        int keycode = key.getKeyCode();
 
         // Immediately set the forward key to pressed state
         minecraft.addScheduledTask(() -> {
@@ -62,6 +61,9 @@ public abstract class AbstractService {
 
         player.addChatMessage(new ChatComponentText("\""+ serviceName + "\" triggered by \"" + this.isActive + "\""));
 
+    }
+    protected void pressKey(KeyBinding key, int hold) {
+        pressKey(key.getKeyCode(), hold);
     }
 
 }

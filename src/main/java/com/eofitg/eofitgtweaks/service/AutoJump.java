@@ -64,7 +64,7 @@ public class AutoJump extends AbstractService {
     }
 
     protected void playerJump() {
-        pressKey(Minecraft.getMinecraft().gameSettings.keyBindJump, holdTime);
+        pressKey(Minecraft.getMinecraft().gameSettings.keyBindJump.getKeyCode(), holdTime);
     }
 
 }
