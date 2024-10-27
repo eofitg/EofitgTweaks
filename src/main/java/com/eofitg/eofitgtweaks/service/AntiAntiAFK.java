@@ -1,14 +1,14 @@
 package com.eofitg.eofitgtweaks.service;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.util.ChatComponentText;
+
+import java.security.SecureRandom;
 
 public class AntiAntiAFK extends AbstractService {
 
     private static final String serviceName = "Anti Anti-AFK";
     private static final int moveInterval = 5 * 1000;
-    private static final int keepTime = 500;
+    private static final int holdTime = 500;
 
     private AntiAntiAFKThread thread;
 
@@ -67,10 +67,19 @@ public class AntiAntiAFK extends AbstractService {
 
     protected void playerMove() {
 
-        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+        Minecraft minecraft = Minecraft.getMinecraft();
 
-        player.moveEntity(1, 0, 0);
-        player.addChatMessage(new ChatComponentText("Moved by \"" + isActive() + "\""));
+        int[] keycodes = {
+                minecraft.gameSettings.keyBindLeft.getKeyCode(),
+                minecraft.gameSettings.keyBindRight.getKeyCode(),
+                minecraft.gameSettings.keyBindBack.getKeyCode(),
+                minecraft.gameSettings.keyBindForward.getKeyCode()
+        };
+
+        SecureRandom secureRandom = new SecureRandom();
+        int index = secureRandom.nextInt(keycodes.length);
+
+        pressKey(keycodes[index], holdTime);
 
     }
 
