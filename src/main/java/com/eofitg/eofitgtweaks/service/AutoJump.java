@@ -1,13 +1,12 @@
 package com.eofitg.eofitgtweaks.service;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.util.ChatComponentText;
 
 public class AutoJump extends AbstractService {
 
     private static final String serviceName = "Auto Jump";
     private static final int jumpInterval = 10 * 1000;
+    private static final int holdTime = 100;
 
     private RegularlyJumpThread thread;
 
@@ -65,12 +64,7 @@ public class AutoJump extends AbstractService {
     }
 
     protected void playerJump() {
-
-        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
-
-        player.jump();
-        player.addChatMessage(new ChatComponentText("Jumped by \"" + isActive() + "\""));
-
+        pressKey(Minecraft.getMinecraft().gameSettings.keyBindJump, holdTime);
     }
 
 }
