@@ -7,7 +7,6 @@ static void replaceString(String str1, String str2) {
 replaceString "http://resources.download.minecraft.net/", "https://resources.download.minecraft.net/"
 
 
-
 buildscript {
     repositories {
         jcenter()
@@ -22,18 +21,24 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "0.1.1"
+
 group= "com.eofitg.eofitgtweaks"
 archivesBaseName = "EofitgTweaks"
+version = "0.1.1"
+
 
 minecraft {
     version = "1.8.9-11.15.1.2318-1.8.9"
     runDir = "run"
     mappings = "stable_22"
+    replace "@VER@", version
+    replace "@ID@", archivesBaseName.toLowerCase()
+    replace "@NAME@", archivesBaseName
 }
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
+
 
 dependencies {
 }
@@ -47,7 +52,7 @@ processResources
         include 'mcmod.info'
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
-    
+
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
