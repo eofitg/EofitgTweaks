@@ -1,12 +1,12 @@
 [
 {
   "modid": "eofitgtweaks",
-  "name": "eofitg Tweaks",
+  "name": "Eofitg Tweaks",
   "description": "eofitg's forge mini-tweaks.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "https://github.com/eofitg/eofitg-Forge-Tweaks",
-  "updateUrl": "https://github.com/eofitg/eofitg-Forge-Tweaks",
+  "url": "https://github.com/eofitg/EofitgTweaks",
+  "updateUrl": "https://github.com/eofitg/EofitgTweaks/releases",
   "authorList": ["eofitg"],
   "credits": "Nah, why?",
   "logoFile": "",
